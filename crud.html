@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script type="text/javascript" src="crud.js"></script>
+</head>
+<body>
+    <div class="box" id="source-box">
+        <div class="box-header">
+            <h3 class="box-title">Responsive Hover Table</h3>
+            <div class="box-tools">
+                <!-- Button trigger modal -->
+                <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#myModal">
+                    create /read /update /delete
+                </button>
+            </div>
+        </div>
+        <!-- /.box-header -->
+        <div class="box-body no-padding">
+            <table class="table table-condensed">
+                <tbody>
+                    <tr>
+                        <th style="width: 10px">#</th>
+                        <th>Task</th>
+                        <th>Progress</th>
+                        <th style="width: 40px">Label</th>
+                    </tr>
+                    <tr>
+                        <td><span id="taskNo_span">1.</span></td>
+                        <td><span id="taskName_span">Update software</span></td>
+                        <td>
+                            <div class="progress progress-xs">
+                                <div id="progess_div" class="progress-bar progress-bar-danger" style="width: 55%"></div>
+                            </div>
+                        </td>
+                        <td><span class="badge bg-red" id="progess_span">55%</span></td>
+                    </tr>
+                    <tr>
+                        <td><span id="taskNo_span">2.</span></td>
+                        <td><span id="taskName_span">Clean database</span></td>
+                        <td>
+                            <div class="progress progress-xs">
+                                <div id="progess_div" class="progress-bar progress-bar-yellow" style="width: 70%"></div>
+                            </div>
+                        </td>
+                        <td><span id="progess_span" class="badge bg-yellow">70%</span></td>
+                    </tr>
+                    <tr>
+                        <td><span id="taskNo_span">3.</span></td>
+                        <td><span id="taskName_span">Cron job running</span></td>
+                        <td>
+                            <div class="progress progress-xs progress-striped active">
+                                <div id="progess_div" class="progress-bar progress-bar-primary" style="width: 30%"></div>
+                            </div>
+                        </td>
+                        <td><span id="progess_span" class="badge bg-light-blue">30%</span></td>
+                    </tr>
+                    <tr>
+                        <td><span id="taskNo_span">4.</span></td>
+                        <td><span id="taskName_span">Fix and squish bugs</span></td>
+                        <td>
+                            <div class="progress progress-xs progress-striped active">
+                                <div id="progess_div" class="progress-bar progress-bar-success" style="width: 90%"></div>
+                            </div>
+                        </td>
+                        <td><span id="progess_span" class="badge bg-green">90%</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <!-- /.box-body -->
+    </div>
+    <div class="example-modal">
+        <div class="modal" id="myModal">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">×</span></button>
+                        <h4 class="modal-title">Info Modal</h4>
+                    </div>
+                    <div class="modal-body">
+                        <!-- start form box -->
+                        <div class="box ">
+                            <div class="box-header with-border">
+                                <h3 class="box-title">Horizontal Form</h3>
+                            </div>
+                            <!-- /.box-header -->
+                            <!-- form start -->
+                            <form class="form-horizontal" id="form-box">
+                                <div class="box-body">
+                                    <div class="form-group">
+                                        <label for="
+    taskNo" class="col-sm-2 control-label">TaskNo</label>
+                                        <div class="col-sm-10">
+                                            <input type="text" class="form-control" id="taskNo" placeholder="Task Number">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="
+    taskName" class="col-sm-2 control-label">TaskName</label>
+                                        <div class="col-sm-10">
+                                            <input type="text" class="form-control" id="taskName" placeholder="Task Name">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="progess" class="col-sm-2 control-label">progess</label>
+                                        <div class="col-sm-10">
+                                            <input type="text" class="form-control" id="progess" placeholder="progess">
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- /.box-body -->
+                                <div class="box-footer">
+                                    <button type="button" class="btn btn-default">Cancel</button>
+                                    <button type="button" onclick="addrow()" class="btn btn-info pull-right">Insert Task</button>
+                                    <button type="button" onclick="updateRow()" class="btn btn-success pull-right">Update Task</button>
+                                    <button type="button" onclick="deleterow()" class="btn btn-danger pull-right">delete Task</button>
+                                    <button type="button" onclick="cleartaskform()" class="btn btn-warning pull-right">Clear Task Form</button>
+                                </div>
+                                <!-- /.box-footer -->
+                            </form>
+                        </div>
+                        <!-- end form box -->
+                        <div class="box" id="destination-box">
+                            <div class="box-header">
+                                <h3 class="box-title">Responsive Hover Table</h3>
+                            </div>
+                            <div class="box-body no-padding"></div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger pull-left" data-dismiss="modal">Close</button>
+                        <button type="button" onclick="cloneTableDestToSource()" class="btn btn-success">Save changes</button>
+                    </div>
+                </div>
+                <!-- /.modal-content -->
+            </div>
+            <!-- /.modal-dialog -->
+        </div>
+        <!-- /.modal -->
+    </div>
+    
+</body>
+</html>
