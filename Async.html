@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+    function resolveAfter2Seconds() {
+        return new Promise(resolve => {
+          setTimeout(() => {
+            resolve('resolved');
+          }, 2000);
+        });
+    }
+      
+      async function asyncCall() {
+        document.getElementById("f1").innerHTML="calling";
+        var result = await resolveAfter2Seconds();
+        document.getElementById("f1").innerHTML=result;
+      }
+      
+      asyncCall();
+    </script>
+</head>
+<body>
+<button onclick="asyncCall()">Run</button>
+  <p>the Output is:<span id="f1"></span></p>    
+</body>
+</html>
